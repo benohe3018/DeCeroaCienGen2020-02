@@ -6,7 +6,6 @@ from email import encoders
 import os
 
 class SendEmailUtility(object):
-    ROBOT_LIBRARY_SCOPE = 'Global'
 
     def __init__(self):
         print ('send email utility')
@@ -22,7 +21,7 @@ class SendEmailUtility(object):
 
         part = MIMEBase('application','octet-stream')
         part.set_payload(open(attach,'rb').read())
-        Encoders.encode_base64(part)
+        encoders.encode_base64(part)
         part.add_header('Content-Disposition','attachment; filename="%s"'%os.path.basename(attach))
         msg.attach(part)
 
